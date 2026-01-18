@@ -8,9 +8,9 @@ const Contacts = () => {
       <div className="flex flex-col justify-center items-center space-y-3 text-center">
         <h3 className="page-header">Get In Touch</h3>
 
-        <h1 className="text-4xl font-extrabold">Let's Work Together</h1>
+        <h1 className="text-4xl font-extrabold">Lets Work Together</h1>
         <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl">
-          Ready to streamline your business operations? Reach out and let's
+          Ready to streamline your business operations? Reach out and lets
           discuss how I can help you succeed.
         </p>
       </div>
@@ -26,7 +26,14 @@ const Contacts = () => {
   );
 };
 
-const ContactItem = (props) => {
+type ContactItemProps = {
+  label: string;
+  value: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  index: number;
+};
+
+const ContactItem = (props: ContactItemProps) => {
   const { label, value, icon: Icon, index } = props;
 
   return (

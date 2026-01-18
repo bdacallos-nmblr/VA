@@ -17,14 +17,21 @@ const Services = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {SERVICES_LIST?.map((service) => (
-          <ServiceItem item={service} key={service.title} />
+          <ServiceItem {...service} key={service.title} />
         ))}
       </div>
     </div>
   );
 };
 
-const ServiceItem = ({ item }) => {
+type Props = {
+  title: string;
+  description: string;
+  color: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
+
+const ServiceItem = (item: Props) => {
   const { icon: Icon, title, description, color } = item;
 
   return (

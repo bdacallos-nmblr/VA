@@ -18,9 +18,18 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (window.scrollY > 0) {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-    }
+    };
+
+    // Listen to scroll events
+    window.addEventListener("scroll", handleScroll);
+
+    // Run once to initialize state
+    handleScroll();
+
+    // Clean up listener
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (

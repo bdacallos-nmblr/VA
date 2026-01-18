@@ -9,6 +9,15 @@ import { ChevronDownIcon } from "lucide-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+type DefaultValue = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  companyName?: string;
+  phoneNumber?: string;
+  message: string;
+};
+
 const schema = yup
   .object()
   .shape({
@@ -43,10 +52,10 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: DefaultValue) => {
     try {
       setIsLoading(true);
-      await new Promise((resolve) => setTimeout(() => resolve(true), 3000));
+      await axios.post("/api/contact", data);
       toast.success("Email sent, thank you.");
       reset();
     } catch (error) {

@@ -23,7 +23,13 @@ const Expertise = () => {
   );
 };
 
-const ExpertiseList = (props) => {
+type Props = {
+  category: string;
+  color: string;
+  skills: string[];
+};
+
+const ExpertiseList = (props: Props) => {
   const { category, color, skills } = props;
 
   return (
