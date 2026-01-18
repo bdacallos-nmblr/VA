@@ -1,10 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+type RequestBody = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  companyName: string;
+  phoneNumber: number;
+  message: string;
+};
+
 export const POST = async (request: NextRequest) => {
-  const { firstName, lastName, email, companyName, phoneNumber, message }: any =
-    await request.json();
-  console.log(message, "message");
+  const {
+    firstName,
+    lastName,
+    email,
+    companyName,
+    phoneNumber,
+    message,
+  }: RequestBody = await request.json();
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -38,9 +52,6 @@ export const POST = async (request: NextRequest) => {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 },
-    );
+    return NextResponse.json({ success: false, error: error }, { status: 500 });
   }
 };
