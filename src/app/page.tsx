@@ -13,10 +13,12 @@ const Home = () => {
         <Navbar />
         <Hero />
       </div>
-      <About />
-      <Services />
-      <Expertise />
-      <Contacts />
+      <div className="flex flex-col items-center ">
+        <About />
+        <Services />
+        <Expertise />
+        <Contacts />
+      </div>
     </div>
   );
 };
